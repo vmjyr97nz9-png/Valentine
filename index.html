@@ -1,59 +1,629 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Day Celebration</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Happy Valentine's Day! 💝</title>
+    <link href="assets/css/style.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .heart {
+            display: inline-block;
+            animation: heartbeat 0.6s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1); }
+        }
+
+        .container-valentine {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Photo Gallery Section */
+        .photo-gallery {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-gallery h2 {
+            color: #ff1493;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-section h2 {
+            color: #ff1493;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff1493, #ff69b4);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+            padding-right: 5%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 55%;
+            text-align: left;
+            padding-left: 5%;
+        }
+
+        .timeline-content {
+            background: #fff5f7;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid #ff1493;
+        }
+
+        .timeline-content h3 {
+            color: #ff1493;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                margin-left: 0;
+                padding-left: 60px;
+                padding-right: 0;
+                text-align: left;
+            }
+        }
+
+        /* Facts Section */
+        .facts-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .facts-section h2 {
+            color: #ff1493;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .reasons-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .reasons-list li {
+            padding: 1.5rem;
+            background: #ffe4e1;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            color: #333;
+            border-left: 5px solid #ff1493;
+        }
+
+        .reasons-list li:before {
+            content: "❤️ ";
+            margin-right: 0.5rem;
+        }
+
+        /* Proposal Section */
+        .proposal-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .proposal-section h2 {
+            color: #ff1493;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .proposal-image {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .proposal-text {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 2rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .proposal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .btn-yes, .btn-no {
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-no {
+            background: #ddd;
+            color: #333;
+        }
+
+        .btn-no:hover {
+            transform: translateX(50px);
+        }
+
+        .response-message {
+            display: none;
+            font-size: 1.5rem;
+            color: #ff1493;
+            font-weight: bold;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fff5f7;
+            border-radius: 10px;
+            animation: popIn 0.5s ease;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .joke-section {
+            background: #ffffcc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 2px dashed #ffaa00;
+            text-align: center;
+        }
+
+        .joke-section h3 {
+            color: #ff6b00;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-size: 1.3rem;
+            color: #ff1493;
+            font-weight: bold;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        .footer {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer p {
+            color: #ff1493;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .stars {
+            font-size: 2rem;
+            margin: 1rem 0;
+            animation: twinkle 1.5s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1><span class="heart">❤️❤️</span> Happy Valentine's Day Beboo! <span class="heart">❤️❤️</span></h1>
+        <p>A website dedicated to YOU my SUPERSTAR 🎀</p>
+    </div>
+
+    <div class="container-valentine">
+        <div class="stars">✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨</div>
+
+        <!-- Photo Gallery -->
+        <div class="photo-gallery">
+            <h2>📸 Mi San Valentín 📸</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="WEBSITEgradNPL/assets/images/valentine.png" alt="Love this photo">
+                    <div class="gallery-caption">Naturally beautiful 💕</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WEBSITEgradNPL/assets/images/valentine2.jpg" alt="Bali vacation">
+                    <div class="gallery-caption"> Innocent Smile </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WEBSITEgradNPL/assets/images/valentine3.png" alt="Vacation">
+                    <div class="gallery-caption">Kind Soul 🌍</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WEBSITEgradNPL/assets/images/valentine4.JPG" alt="She">
+                    <div class="gallery-caption">Irrestible Charm ✨</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WEBSITEgradNPL/assets/images/valentine5.JPG" alt="Silly me">
+                    <div class="gallery-caption"> Timeless grace🤪</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="WEBSITEgradNPL/assets/images/valentine6.JPG" alt="Forever with you">
+                    <div class="gallery-caption"> Angelic Presence🎀🎀✧˚.🎀</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Song Playlist -->
+        <div class="facts-section">
+            <h2>🎵 Valentine Playlist 🎵</h2>
+            <ul class="reasons-list">
+                <li><a href="https://www.youtube.com/results?search_query=Ed+Sheeran+Perfect" target="_blank" rel="noopener">Perfect — Ed Sheeran</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=John+Legend+All+of+Me" target="_blank" rel="noopener">All of Me — John Legend</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Taylor+Swift+Love+Story" target="_blank" rel="noopener">Love Story — Taylor Swift</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Bruno+Mars+Just+the+Way+You+Are" target="_blank" rel="noopener">Just the Way You Are — Bruno Mars</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Stephen+Sanchez+Until+I+Found+You" target="_blank" rel="noopener">Until I Found You — Stephen Sanchez</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Elvis+Presley+Can%27t+Help+Falling+in+Love" target="_blank" rel="noopener">Can’t Help Falling in Love — Elvis Presley</a></li>
+            </ul>
+
+            <h3 style="color: #ff1493; margin: 2rem 0 1rem; text-align: center;">🎬 Bollywood Love Vibes 🎬</h3>
+            <ul class="reasons-list">
+                <li><a href="https://www.youtube.com/results?search_query=O+Rangez+Bollywood" target="_blank" rel="noopener">O Rangez — Bollywood</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Piya+O+Re+Piya" target="_blank" rel="noopener">Piya O Re Piya — Bollywood</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Tum+Hi+Ho+Aashiqui+2" target="_blank" rel="noopener">Tum Hi Ho — Aashiqui 2</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Kiska+Hai+Ye+Dil+Ko" target="_blank" rel="noopener">Kiska Hai Ye Dil Ko — Bollywood</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Haan+Ke+Haan+Bollywood" target="_blank" rel="noopener">Haan Ke Haan — Bollywood</a></li>
+            </ul>
+
+            <h3 style="color: #ff1493; margin: 2rem 0 1rem; text-align: center;">🇳🇵 Nepali Love Vibes 🇳🇵</h3>
+            <ul class="reasons-list">
+                <li><a href="https://www.youtube.com/results?search_query=Hajar+Sapana+Haruko+Nepali+song" target="_blank" rel="noopener">Hajar Sapana Haruko — Nepali Classic</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Himal+Sari+Narayan+Gopal" target="_blank" rel="noopener">Himal Sari — Narayan Gopal</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Bagaicha+Ma+Najau+Timi+Nepali+song" target="_blank" rel="noopener">Bagaicha Ma Najau Timi — Nepali</a></li>
+                <li><a href="https://www.youtube.com/results?search_query=Ritu+Haru+Ma+Timi+Nepali+song" target="_blank" rel="noopener">Ritu Haru Ma Timi — Nepali</a></li>
+
+            </ul>
+        </div>
+
+        <!-- Timeline Section -->
+        <div class="timeline-section">
+            <h2>🎼🎶🎤 Let me write a song for her 🎼🎶🎤</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Elle est le battement de mon cœur</h3>
+                        <p>नदेखोस अब तिमीलाई कसैले 
+                            मै मात्र हेरिरहु खाली 
+                            हृडेए म लुकौ कि तिमीलाई 
+                            न्यानो अङालो को घुम्तो हाली  ❤️</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>लजालु </h3>
+                        <p>त्यो घुम्तो म उचालु कि मुहार त्यो नियालु कि भुलेर आफुलाई नै हजुर मै हरौकी 
+नमान लाज 🦋</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Moon</h3>
+                        <p>सुन्दर मुहार तिम्रो चन्द्रमा सर्मौने एक पल्टा देख्न पाए चाहिँन्न अरू केही। ❤️ 💕</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Adventures Together</h3>
+                        <p>छायाँ बनेर म साथ दिन्छु हरेक पल हरेक जन्म आँखामा डुब्न देऊ, सासमा बस्न देऊ प्रेममा रुजेर दुनियाँलाई भुल्न देऊ सपनाको सुनौलो संसार सजाऔँ। ✨ 🌟</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Goosugoosu Bumps</h3>
+                        <p>मिलेका ति आखा हरु झान हेरी रहु झै बनौछन खुलेका केश हरुले फेरी बासना गुलब झै छर्दछन 
+म हराए…, म हारए… ❤️</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fun Facts -->
+        <div class="facts-section">
+            <h2>😄 You & Me  😄</h2>
+            <ul class="reasons-list">
+                <li>You make me laugh so hard I snort (don't deny it)</li>
+                <li>Your jokes are so adorable</li>
+                <li>I catch myself staring at you, smiling, and thinking, “Wow… just wow.”</li>
+                <li>Your reels may trend for a moment, but my love for you is timeless</li>
+                <li>The algorithm loves you… I love you more.</li>
+                <li>Your dance moves are hilariously unique 💃</li>
+                <li>You are my favorite notification</li>
+                <li>Millions may watch your reels, but I’m the one who’s truly hooked</li>
+            </ul>
+        </div>
+
+        <!-- Poem Section -->
+<div class="facts-section">
+    <h2>💖 Poem for you 💖</h2>
+    <div style="background: #ffe4e1; padding: 2rem; border-radius: 10px; border-left: 5px solid #ff1493; text-align: center; font-style: italic; line-height: 2; color: #333; font-size: 1.1rem;">
+        <p>Love is red, the sky is blue,<br>
+        Every little thing reminds me of you.<br>
+        Your smile is gold, your laugh is light,<br>
+        Thinking of you keeps me up at night.<br>
+        <br>
+        Roses are soft, stars shine bright,<br>
+        Even the moon envies your light.<br>
+        Coffee is sweet, and so is your name,<br>
+        Being with you is my favorite game.<br>
+        <br>
+        Your eyes are oceans, deep and true,<br>
+        Every glance makes me fall anew.<br>
+        Love is messy, love is free,<br>
+        But nothing's as perfect as you and me.<br>
+        <br>
+        Forever yours, ❤️</p>
+    </div>
+</div>
+
+        <!-- Joke Section -->
+        <div class="joke-section">
+            <h3>💝 A Terrible Joke For You 💝</h3>
+            <p style="font-size: 1.1rem; color: #333; font-weight: bold;">Why don’t eggs tell jokes?
+Because they’d crack each other up. 🥚😂</p>
+            <p style="font-size: 1.1rem; color: #333; font-weight: bold;">I would tell you a construction joke…
+But I’m still working on it. 🏗️ 😂</p>
+<p style="font-size: 1.1rem; color: #333; font-weight: bold;">Why did the scarecrow win an award?
+Because he was outstanding in his field. 🌾😂</p>
+            <p style="margin-top: 1rem; color: #666;">(I know I'm terrible at jokes, but you love me anyway!)</p>
+        </div>
+
+        <!-- Proposal Section -->
+        
+        <div class="stars">✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨💕✨✨</div>
+
+        <div class="proposal-section">
+            <h2>💍 Will You Be My Valentine? 💍</h2>
+            <img src="WEBSITEgradNPL/assets/images/valentine1.jpeg" alt="Us together" class="proposal-image">
+            <p class="proposal-text">
+                From the moment I met you, I knew you were someone special. Every day with you is a blessing. 
+                Your smile, your laugh, your kindness, your everything makes me the happiest person alive.
+                <br><br>
+                I don't want to spend another Valentine's Day without you being officially MY Valentine.
+                <br><br>
+                <strong style="font-size: 1.4rem; color: #ff1493;">So... Will You Be My Valentine? ❤️</strong>
+            </p>
+
+            <div class="proposal-buttons">
+                <button class="btn-yes" onclick="handleYes()">YES! 💕</button>
+                <button class="btn-no" onclick="handleNo()">Maybe Later</button>
+            </div>
+
+            <div id="responseMessage" class="response-message"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>No matter your answer, you mean the world to me! 💝</p>
+            <p style="font-size: 1.5rem;">I Love You! ❤️❤️❤️</p>
+            <div class="stars">✨💕✨</div>
+        </div>
+    </div>
+
     <script>
         function handleYes() {
-            var message = document.querySelector('.message');
+            const message = document.getElementById('responseMessage');
+            message.textContent = '🎉 OMG YES! You just made me the happiest person alive! I love you so much! 💕 Let\'s celebrate together! 🎊';
             message.style.display = 'block';
-            document.querySelector('.btn-no').style.display = 'none';
-            // Further actions...
+
+            // Hide the Maybe Later button
+        const noBtn = document.querySelector('.btn-no');
+        noBtn.style.display = 'none';
+            
+            // Add confetti effect
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => createMultipleConfetti(), i * 500);
+            }
+            createMultipleConfetti();
+        }
+
+        function handleNo() {
+        clickCount++;
+        const noBtn = document.querySelector('.btn-no');
+        noBtn.textContent = 'Oops, try again!';
+        
+        // Make it smaller each time (minimum scale of 0.3)
+        const scale = Math.max(0.3, 1 - (clickCount * 0.15));
+        
+        // Make it harder to click - move it and scale it down
+        const randomX = Math.random() * 200 - 100;
+        const randomY = Math.random() * 200 - 100;
+        noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${scale})`;
+    }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = '#ff1493';
+            confetti.style.borderRadius = '50%';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = '-10px';
+            confetti.style.zIndex = '9999';
+            document.body.appendChild(confetti);
+
+            let pos = 0;
+            const interval = setInterval(() => {
+                pos += Math.random() * 5;
+                confetti.style.top = pos + 'px';
+                if (pos > window.innerHeight) {
+                    clearInterval(interval);
+                    confetti.remove();
+                }
+            }, 30);
+        }
+
+        // Create multiple confetti pieces
+        function createMultipleConfetti() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(createConfetti, i * 30);
+            }
         }
     </script>
-</head>
-<body>
-    <header>
-        <h1>Happy Valentine's Day!</h1>
-    </header>
-    <section class="gallery">
-        <h2>Photo Gallery</h2>
-        <!-- Gallery images go here -->
-    </section>
-    <section class="playlist">
-        <h2>Song Playlist</h2>
-        <h3>English Songs</h3>
-        <!-- List of English songs -->
-        <h3>Bollywood Songs</h3>
-        <!-- List of Bollywood songs -->
-        <h3>Nepali Songs</h3>
-        <!-- List of Nepali songs -->
-    </section>
-    <section class="timeline">
-        <h2>Timeline Section</h2>
-        <p>Details about the timeline...</p>
-    </section>
-    <section class="fun-facts">
-        <h2>Fun Facts</h2>
-        <p>Interesting facts about Valentine's Day...</p>
-    </section>
-    <section class="poem">
-        <h2>Poem Section</h2>
-        <p>Heartfelt poems...</p>
-    </section>
-    <section class="joke">
-        <h2>Joke Section</h2>
-        <p>Jokes to lighten the mood...</p>
-    </section>
-    <section class="proposal">
-        <h2>Proposal Section</h2>
-        <button class="btn-yes" onclick="handleYes()">Yes</button>
-        <button class="btn-no">Maybe Later</button>
-    </section>
-    <footer>
-        <p>&copy; 2026 Valentine's Day Celebration</p>
-    </footer>
 </body>
+
 </html>
+
+        
