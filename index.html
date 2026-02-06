@@ -1,17 +1,59 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Sample Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Celebration</title>
+    <link rel="stylesheet" href="styles.css">
     <script>
         function handleYes() {
+            var message = document.querySelector('.message');
             message.style.display = 'block';
             document.querySelector('.btn-no').style.display = 'none';
-            // Other logic here
+            // Further actions...
         }
     </script>
 </head>
 <body>
-    <div class="message"></div>
-    <button class="btn-no">Maybe Later</button>
-    <button onclick="handleYes()">Yes</button>
+    <header>
+        <h1>Happy Valentine's Day!</h1>
+    </header>
+    <section class="gallery">
+        <h2>Photo Gallery</h2>
+        <!-- Gallery images go here -->
+    </section>
+    <section class="playlist">
+        <h2>Song Playlist</h2>
+        <h3>English Songs</h3>
+        <!-- List of English songs -->
+        <h3>Bollywood Songs</h3>
+        <!-- List of Bollywood songs -->
+        <h3>Nepali Songs</h3>
+        <!-- List of Nepali songs -->
+    </section>
+    <section class="timeline">
+        <h2>Timeline Section</h2>
+        <p>Details about the timeline...</p>
+    </section>
+    <section class="fun-facts">
+        <h2>Fun Facts</h2>
+        <p>Interesting facts about Valentine's Day...</p>
+    </section>
+    <section class="poem">
+        <h2>Poem Section</h2>
+        <p>Heartfelt poems...</p>
+    </section>
+    <section class="joke">
+        <h2>Joke Section</h2>
+        <p>Jokes to lighten the mood...</p>
+    </section>
+    <section class="proposal">
+        <h2>Proposal Section</h2>
+        <button class="btn-yes" onclick="handleYes()">Yes</button>
+        <button class="btn-no">Maybe Later</button>
+    </section>
+    <footer>
+        <p>&copy; 2026 Valentine's Day Celebration</p>
+    </footer>
 </body>
 </html>
