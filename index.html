@@ -1,29 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sample Page</title>
     <script>
         function handleYes() {
-            const message = document.getElementById('responseMessage');
-            message.textContent = '🎉 OMG YES! You just made me the happiest person alive! I love you so much! 💕 Let's celebrate together! 🎊';
             message.style.display = 'block';
-            
-            // Hide the "Maybe Later" button
             document.querySelector('.btn-no').style.display = 'none';
-            
-            // Add confetti effect
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => createMultipleConfetti(), i * 500);
-            }
-            createMultipleConfetti();
+            // Other logic here
         }
     </script>
 </head>
 <body>
-    <div id="responseMessage" style="display:none;"></div>
-    <button class="btn-yes" onclick="handleYes()">YES!</button>
+    <div class="message"></div>
     <button class="btn-no">Maybe Later</button>
+    <button onclick="handleYes()">Yes</button>
 </body>
 </html>
